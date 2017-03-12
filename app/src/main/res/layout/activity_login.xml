@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/signinbg">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="70dp"
+                android:src="@drawable/signinlogo"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                </View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/signin"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <customfonts.MyEditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginRight="@dimen/dp_20"
+                        android:background="#0000"
+                        android:drawableLeft="@drawable/user"
+                        android:drawablePadding="35dp"
+                        android:hint="@string/title_email"
+                        android:inputType="text"
+                        android:padding="16dp"
+                        android:textColor="@color/signintext"
+                        android:textColorHint="@color/signintext"
+                        android:textSize="@dimen/sp_16"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginRight="@dimen/dp_30"
+                        android:background="@color/signintext"/>
+
+                    <customfonts.MyEditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginRight="@dimen/dp_20"
+                        android:background="#0000"
+                        android:drawableLeft="@drawable/password"
+                        android:drawablePadding="38dp"
+                        android:hint="@string/title_password"
+                        android:inputType="textPassword"
+                        android:maxLength="8"
+                        android:padding="16dp"
+                        android:textColor="@color/signintext"
+                        android:textColorHint="@color/signintext"
+                        android:textSize="@dimen/sp_16"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="63dp"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginRight="@dimen/dp_30"
+                        android:background="@color/signintext"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <customfonts.MyTextView
+            android:id="@+id/signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/rect"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/title_login"
+            android:textColor="#3b4a45"
+            android:textSize="@dimen/sp_20"
+            />
+    </RelativeLayout>
+</layout>
+
