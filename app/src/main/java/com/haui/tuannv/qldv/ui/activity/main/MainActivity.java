@@ -3,6 +3,8 @@ package com.haui.tuannv.qldv.ui.activity.main;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -11,9 +13,9 @@ import android.widget.RelativeLayout;
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.broadcast.NetworkReceiver;
 import com.haui.tuannv.qldv.databinding.ActivityMainBinding;
-import com.haui.tuannv.qldv.ui.fragment.RevenueFragment;
-import com.haui.tuannv.qldv.ui.fragment.SpendFragment;
-import com.haui.tuannv.qldv.ui.fragment.StatisticalFragment;
+import com.haui.tuannv.qldv.ui.fragment.revenue.RevenueFragment;
+import com.haui.tuannv.qldv.ui.fragment.spend.SpendFragment;
+import com.haui.tuannv.qldv.ui.fragment.statistical.StatisticalFragment;
 import com.haui.tuannv.qldv.util.Utils;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     private ActivityMainBinding mBinding;
     private Toolbar mToolbar;
     private ViewPagerAdapter mAdapter;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +56,19 @@ public class MainActivity extends AppCompatActivity
 
     public void initToolBar() {
         mToolbar = mBinding.toolbarLayout.toolbar;
+        mDrawerLayout = mBinding.drawerLayout;
         if (mToolbar == null) return;
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() == null) return;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.fragment;
+package com.haui.tuannv.qldv.ui.fragment.spend;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,26 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haui.tuannv.qldv.R;
-import com.haui.tuannv.qldv.databinding.FragmentRevenueBinding;
+import com.haui.tuannv.qldv.databinding.FragmentSpendBinding;
 
 /**
  * Created by tuanbg on 3/29/17.
  */
-public class RevenueFragment extends Fragment {
-    private FragmentRevenueBinding mBinding;
+public class SpendFragment extends Fragment {
+    private FragmentSpendBinding mBinding;
 
-    public static RevenueFragment newInstance() {
+    public static SpendFragment newInstance() {
         Bundle args = new Bundle();
-        RevenueFragment fragment = new RevenueFragment();
+        SpendFragment fragment = new SpendFragment();
         fragment.setArguments(args);
         return fragment;
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_revenue, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_spend, container, false);
         return mBinding.getRoot();
     }
 }

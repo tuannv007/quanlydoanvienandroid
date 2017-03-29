@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.fragment;
+package com.haui.tuannv.qldv.ui.fragment.revenue;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,17 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haui.tuannv.qldv.R;
-import com.haui.tuannv.qldv.databinding.FragmentStatisticalBinding;
+import com.haui.tuannv.qldv.databinding.FragmentRevenueBinding;
 
 /**
  * Created by tuanbg on 3/29/17.
  */
-public class StatisticalFragment extends Fragment {
-    private FragmentStatisticalBinding mBinding;
+public class RevenueFragment extends Fragment {
+    private FragmentRevenueBinding mBinding;
 
-    public static StatisticalFragment newInstance() {
+    public static RevenueFragment newInstance() {
         Bundle args = new Bundle();
-        StatisticalFragment fragment = new StatisticalFragment();
+        RevenueFragment fragment = new RevenueFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -28,8 +28,7 @@ public class StatisticalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_statistical, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_revenue, container, false);
         return mBinding.getRoot();
     }
 }
