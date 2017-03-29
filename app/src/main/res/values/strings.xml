@@ -7,4 +7,6 @@
     <string name="title_statistical">Statistical</string>
     <string name="title_revenue">Revenue</string>
     <string name="title_spend">Spend</string>
+    <string name="title_username">Username</string>
+    <string name="title_forgot_password"><u>Forgot Password</u></string>
 </resources>
