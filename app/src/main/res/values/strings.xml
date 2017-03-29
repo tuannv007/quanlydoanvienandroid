@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Qldv</string>
+    <string name="app_name">Manager Student</string>
     <string name="title_email">Email</string>
     <string name="title_password">Password</string>
     <string name="title_login">Login</string>
     <string name="msg_no_internet">Cannot access internet</string>
+    <string name="title_statistical">Statistical</string>
+    <string name="title_revenue">Revenue</string>
+    <string name="title_spend">Spend</string>
 </resources>

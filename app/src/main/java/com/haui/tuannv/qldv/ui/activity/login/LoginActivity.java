@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.login;
+package com.haui.tuannv.qldv.ui.activity.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

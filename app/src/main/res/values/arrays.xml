@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="array_title_fragment">
+        <item>@string/title_statistical</item>
+        <item>@string/title_revenue</item>
+        <item>@string/title_spend</item>
+    </array>
+</resources>
