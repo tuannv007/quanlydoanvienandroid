@@ -1,12 +1,17 @@
 <resources>
-    <string name="app_name">Manager Student</string>
+    <string name="app_name">Quản lý đoàn viên </string>
     <string name="title_email">Email</string>
-    <string name="title_password">Password</string>
-    <string name="title_login">Login</string>
-    <string name="msg_no_internet">Cannot access internet</string>
-    <string name="title_statistical">Statistical</string>
-    <string name="title_revenue">Revenue</string>
-    <string name="title_spend">Spend</string>
-    <string name="title_username">Username</string>
-    <string name="title_forgot_password"><u>Forgot Password</u></string>
+    <string name="title_password">Mật khẩu </string>
+    <string name="title_login">Đăng nhập </string>
+    <string name="msg_no_internet">Không thể truy cập internet </string>
+    <string name="title_statistical">Thống kê </string>
+    <string name="title_revenue">Quản lý thu</string>
+    <string name="title_spend">Quản lý chi </string>
+    <string name="title_username">Tên đăng nhập </string>
+    <string name="title_forgot_password">Quên mật khẩu </string>
+    <string name="title_ok">OK</string>
+    <string name="msg_forgot_password">Vì lý do bảo mật, bạn vui lòng liên lạc với admin
+        theo thông tin  sau để lấy lại mật khẩu Email: tuan.dev.java@gmail.com
+    </string>
+    <string name="title_spend_other">Khoản thu khác</string>
 </resources>

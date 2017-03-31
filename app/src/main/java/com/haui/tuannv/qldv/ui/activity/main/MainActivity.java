@@ -1,5 +1,7 @@
 package com.haui.tuannv.qldv.ui.activity.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity
     private ViewPagerAdapter mAdapter;
     private DrawerLayout mDrawerLayout;
 
+    public static Intent getDataIntent(Context context) {
+        return new Intent(context, MainActivity.class);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void initToolBar() {
-        mToolbar = mBinding.toolbarLayout.toolbar;
+        mToolbar = mBinding.toolbar;
         mDrawerLayout = mBinding.drawerLayout;
         if (mToolbar == null) return;
         setSupportActionBar(mToolbar);
