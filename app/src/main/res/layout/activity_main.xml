@@ -26,7 +26,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/color_teal_600"
+                android:background="@color/color_blue_800"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways"
@@ -36,8 +36,8 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_teal_600"
-                app:tabBackground="@color/color_teal_600"
+                android:background="@color/color_blue_800"
+                app:tabBackground="@color/color_blue_800"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="@color/color_white"
                 app:tabMode="fixed"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <android.support.v4.view.ViewPager
+                <android.support.v4.view.ViewPager
                     android:id="@+id/view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -63,8 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:headerLayout="@layout/header"
             app:menu="@menu/main_activity"
-            />
+            bind:headerNavigation="@{activity.user}"/>
     </android.support.v4.widget.DrawerLayout>
 </layout>

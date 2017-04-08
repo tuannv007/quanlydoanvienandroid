@@ -11,10 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haui.tuannv.qldv.R;
+import com.haui.tuannv.qldv.data.local.model.User;
+import com.haui.tuannv.qldv.data.remote.login.LoginRepository;
 import com.haui.tuannv.qldv.databinding.FragmentLoginBinding;
 import com.haui.tuannv.qldv.ui.activity.auth.forgotpassword.ForgotPasswordFragment;
 import com.haui.tuannv.qldv.ui.activity.main.MainActivity;
+import com.haui.tuannv.qldv.util.ActivityUtil;
 import com.haui.tuannv.qldv.util.Constant;
+import com.haui.tuannv.qldv.util.TProgressDialog;
 
 /**
  * Created by tuanbg on 3/24/17.
@@ -22,6 +26,7 @@ import com.haui.tuannv.qldv.util.Constant;
 public class LoginFragment extends Fragment implements LoginListener {
     private LoginViewModel mViewModel;
     private FragmentLoginBinding mBinding;
+    private TProgressDialog mDialog;
 
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
@@ -35,23 +40,36 @@ public class LoginFragment extends Fragment implements LoginListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
-        mViewModel = new LoginViewModel(this);
+        mViewModel = new LoginViewModel(this, LoginRepository.getInstance());
         mBinding.setViewmodel(mViewModel);
         return mBinding.getRoot();
     }
 
     @Override
-    public void loginSuccess() {
-        startActivity(MainActivity.getDataIntent(getActivity()));
+    public void loginSuccess(User user) {
+        startActivity(MainActivity.getDataIntent(getActivity(), user));
     }
 
     @Override
-    public void loginError() {
+    public void loginError(String message) {
+        if (message == null) return;
+        ActivityUtil.showToast(getActivity(), message);
     }
 
     @Override
     public void forgotPassword() {
         showDialogForgotPass();
+    }
+
+    @Override
+    public void showDialog() {
+        if (mDialog == null) mDialog = new TProgressDialog(getActivity());
+        mDialog.show();
+    }
+
+    @Override
+    public void dismissDialog() {
+        if (mDialog != null && mDialog.isShowing()) mDialog.dismiss();
     }
 
     public void showDialogForgotPass() {

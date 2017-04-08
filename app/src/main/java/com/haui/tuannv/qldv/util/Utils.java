@@ -36,4 +36,8 @@ public class Utils {
             }
         }
     }
+
+    public class BaseNetwork {
+        public static final String BASE_URL = "https://tuannv007.000webhostapp.com";
+    }
 }

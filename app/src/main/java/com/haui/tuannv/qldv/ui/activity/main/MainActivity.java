@@ -9,11 +9,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.broadcast.NetworkReceiver;
+import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.ActivityMainBinding;
 import com.haui.tuannv.qldv.ui.fragment.revenue.RevenueFragment;
 import com.haui.tuannv.qldv.ui.fragment.spend.SpendFragment;
@@ -30,9 +32,14 @@ public class MainActivity extends AppCompatActivity
     private Toolbar mToolbar;
     private ViewPagerAdapter mAdapter;
     private DrawerLayout mDrawerLayout;
+    private User mUser;
 
-    public static Intent getDataIntent(Context context) {
-        return new Intent(context, MainActivity.class);
+    public static Intent getDataIntent(Context context, User user) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("user", user);
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtras(bundle);
+        return intent;
     }
 
     @Override
@@ -44,6 +51,12 @@ public class MainActivity extends AppCompatActivity
         NetworkReceiver.setNetworkReceiver(this);
         initToolBar();
         init();
+        getDataFromIntent();
+    }
+
+    private void getDataFromIntent() {
+        if (getIntent().getExtras() == null) return;
+        mUser = getIntent().getExtras().getParcelable("user");
     }
 
     public void init() {
@@ -83,5 +96,9 @@ public class MainActivity extends AppCompatActivity
 
     public ViewPagerAdapter getAdapter() {
         return mAdapter;
+    }
+
+    public User getUser() {
+        return mUser;
     }
 }
