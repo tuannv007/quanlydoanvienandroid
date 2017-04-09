@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.activity.main;
+package com.haui.tuannv.qldv.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
@@ -17,9 +16,9 @@ import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.broadcast.NetworkReceiver;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.ActivityMainBinding;
-import com.haui.tuannv.qldv.ui.fragment.revenue.RevenueFragment;
-import com.haui.tuannv.qldv.ui.fragment.spend.SpendFragment;
-import com.haui.tuannv.qldv.ui.fragment.statistical.StatisticalFragment;
+import com.haui.tuannv.qldv.ui.revenue.RevenueFragment;
+import com.haui.tuannv.qldv.ui.spend.SpendFragment;
+import com.haui.tuannv.qldv.ui.statistical.StatisticalFragment;
 import com.haui.tuannv.qldv.util.Utils;
 
 import java.util.ArrayList;

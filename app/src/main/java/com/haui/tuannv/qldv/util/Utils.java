@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.haui.tuannv.qldv.R;
 
 /**
@@ -19,15 +18,14 @@ public class Utils {
         if (!isConnect) {
             if (mSnackBar == null) {
                 mSnackBar =
-                    Snackbar.make(layout, R.string.msg_no_internet,
-                        Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Ok", null);
+                        Snackbar.make(layout, R.string.msg_no_internet, Snackbar.LENGTH_INDEFINITE)
+                                .setAction("Ok", null);
                 View view = mSnackBar.getView();
                 TextView textSnackbar =
-                    (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+                        (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                 textSnackbar.setGravity(Gravity.CENTER);
                 view.setBackgroundColor(
-                    ContextCompat.getColor(view.getContext(), R.color.color_teal_500));
+                        ContextCompat.getColor(view.getContext(), R.color.color_teal_500));
             }
             mSnackBar.show();
         } else {
@@ -38,6 +36,12 @@ public class Utils {
     }
 
     public class BaseNetwork {
-        public static final String BASE_URL = "https://tuannv007.000webhostapp.com";
+        public static final String BASE_URL = "http://tuannv007.xyz/";
+    }
+
+    public class SharePreference {
+        public static final String SHARE_PRE_NAME = "SHARE_PRE_NAME";
+        public static final String SHARE_PRE_USERNAME = "PREF_USERNAME";
+        public static final String SHARE_PRE_PASSWORD = "PREF_PASSWORD";
     }
 }

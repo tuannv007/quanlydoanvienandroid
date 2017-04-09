@@ -1,11 +1,11 @@
 package com.haui.tuannv.qldv.data.remote.login;
 
+import android.util.Log;
 import com.haui.tuannv.qldv.data.DataCallback;
 import com.haui.tuannv.qldv.data.ServiceGenerator;
 import com.haui.tuannv.qldv.data.local.model.DataUserLogin;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.network.Auth;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,20 +23,21 @@ public class LoginRemoteDataSource implements LoginDataSource {
 
     @Override
     public void login(String account, String password,
-                      final DataCallback<ResponseItem<DataUserLogin>> callback) {
+            final DataCallback<ResponseItem<DataUserLogin>> callback) {
         ServiceGenerator.createService(Auth.loginService.class)
-            .login(account, password)
-            .enqueue(new Callback<ResponseItem<DataUserLogin>>() {
-                @Override
-                public void onResponse(Call<ResponseItem<DataUserLogin>> call,
-                                       Response<ResponseItem<DataUserLogin>> response) {
-                    callback.onSuccess(response.body());
-                }
+                .login(account, password)
+                .enqueue(new Callback<ResponseItem<DataUserLogin>>() {
+                    @Override
+                    public void onResponse(Call<ResponseItem<DataUserLogin>> call,
+                            Response<ResponseItem<DataUserLogin>> response) {
+                        callback.onSuccess(response.body());
+                    }
 
-                @Override
-                public void onFailure(Call<ResponseItem<DataUserLogin>> call, Throwable t) {
-                    callback.onError(t.getMessage());
-                }
-            });
+                    @Override
+                    public void onFailure(Call<ResponseItem<DataUserLogin>> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                        Log.e("tag", call.request().url() + "");
+                    }
+                });
     }
 }

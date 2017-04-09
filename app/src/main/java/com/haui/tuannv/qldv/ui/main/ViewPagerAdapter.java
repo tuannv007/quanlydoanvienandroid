@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.activity.main;
+package com.haui.tuannv.qldv.ui.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

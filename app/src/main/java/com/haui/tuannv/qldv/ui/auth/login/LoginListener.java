@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.activity.auth.login;
+package com.haui.tuannv.qldv.ui.auth.login;
 
 import com.haui.tuannv.qldv.data.local.model.User;
 
@@ -7,8 +7,14 @@ import com.haui.tuannv.qldv.data.local.model.User;
  */
 public interface LoginListener {
     void loginSuccess(User user);
+
     void loginError(String message);
+
     void forgotPassword();
+
     void showDialog();
+
     void dismissDialog();
+
+    void setChecked(boolean b);
 }

@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.activity.auth;
+package com.haui.tuannv.qldv.ui.auth;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.databinding.ActivityAuthBinding;
-import com.haui.tuannv.qldv.ui.activity.auth.login.LoginFragment;
+import com.haui.tuannv.qldv.ui.auth.login.LoginFragment;
 import com.haui.tuannv.qldv.util.ActivityUtil;
 
 /**

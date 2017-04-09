@@ -15,4 +15,7 @@
     </string>
     <string name="title_spend_other">Khoản thu khác</string>
     <string name="title_faculty">Khoa</string>
+    <string name="save_password">Lưu mật khẩu</string>
+    <string name="title_hcm">Đoàn thanh niên cộng sản Hồ Chí Minh</string>
+    <string name="title_manager_classes">Quản lý lớp</string>
 </resources>

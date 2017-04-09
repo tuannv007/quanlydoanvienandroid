@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.fragment.statistical;
+package com.haui.tuannv.qldv.ui.statistical;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

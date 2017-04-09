@@ -1,5 +1,6 @@
 package com.haui.tuannv.qldv.data.local.model;
 
+import android.os.Parcel;
 import com.google.gson.annotations.SerializedName;
 
 public class Fee extends BaseObject {
@@ -13,6 +14,10 @@ public class Fee extends BaseObject {
     private String mDescription;
     @SerializedName("user_id")
     private String mUserId;
+
+    protected Fee(Parcel in) {
+        super(in);
+    }
 
     public String getTitle() {
         return mTitle;
@@ -52,5 +57,10 @@ public class Fee extends BaseObject {
 
     public void setUserId(String userId) {
         mUserId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return mYear;
     }
 }

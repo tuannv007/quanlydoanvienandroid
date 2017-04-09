@@ -1,7 +1,7 @@
 package com.haui.tuannv.qldv.data.local.model;
 
 import android.databinding.Bindable;
-
+import android.os.Parcel;
 import com.google.gson.annotations.SerializedName;
 import com.haui.tuannv.qldv.BR;
 
@@ -16,6 +16,10 @@ public class SchoolYear extends BaseObject {
     private String endYear;
     @SerializedName("user_id")
     private String userId;
+
+    protected SchoolYear(Parcel in) {
+        super(in);
+    }
 
     @Bindable
     public String getName() {
@@ -57,5 +61,10 @@ public class SchoolYear extends BaseObject {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return label;
     }
 }

@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.haui.tuannv.qldv.data.local.model.User;
@@ -26,63 +25,65 @@ import com.haui.tuannv.qldv.databinding.HeaderBinding;
  * <></>
  */
 public class DataBindingUtils {
-    @BindingAdapter({"bind:imageResource"})
+    @BindingAdapter({ "bind:imageResource" })
     public static void loadImage(ImageView view, Drawable drawable) {
         view.setImageDrawable(drawable);
     }
 
-    @BindingAdapter({"bind:imageDrawable"})
+    @BindingAdapter({ "bind:imageDrawable" })
     public static void loadImageDrawable(ImageButton view, Drawable source) {
-        Glide.with(view.getContext()).load(source).asBitmap().centerCrop()
-            .into(new BitmapImageViewTarget(view) {
-                @Override
-                protected void setResource(Bitmap resource) {
-                    RoundedBitmapDrawable circularBitmapDrawable =
-                        RoundedBitmapDrawableFactory.create(view.getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    view.setImageDrawable(circularBitmapDrawable);
-                }
-            });
+        Glide.with(view.getContext())
+                .load(source)
+                .asBitmap()
+                .centerCrop()
+                .into(new BitmapImageViewTarget(view) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable =
+                                RoundedBitmapDrawableFactory.create(view.getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        view.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
     }
 
-    @BindingAdapter({"bind:adapterViewPager"})
+    @BindingAdapter({ "bind:adapterViewPager" })
     public static void setViewPagerAdapter(ViewPager view, FragmentPagerAdapter adapter) {
         view.setAdapter(adapter);
     }
 
     @BindingAdapter("layoutManager")
     public static void setLayoutManager(RecyclerView view,
-                                        LayoutManageUtil.LayoutManagerFactory layout) {
+            LayoutManageUtil.LayoutManagerFactory layout) {
         view.setLayoutManager(layout.create(view));
     }
 
-    @BindingAdapter({"bind:bindAdapter"})
+    @BindingAdapter({ "bind:bindAdapter" })
     public static void bindAdapterRecycler(RecyclerView view, RecyclerView.Adapter adapter) {
         view.setNestedScrollingEnabled(false);
         view.setAdapter(adapter);
     }
 
-    @BindingAdapter({"bind:setErrorEditText"})
+    @BindingAdapter({ "bind:setErrorEditText" })
     public static void setError(final EditText editText, final String msg) {
-        if (TextUtils.isEmpty(editText.getText())) editText.setError(msg);
+        if (TextUtils.isEmpty(editText.getText().toString())) editText.setError(msg);
     }
 
-    @BindingAdapter({"bind:setErrorEmail"})
+    @BindingAdapter({ "bind:setErrorEmail" })
     public static void setErrorEmail(final EditText editText, final String msg) {
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editText.getText()).matches()) {
             editText.setError(msg);
         }
     }
 
-    @BindingAdapter({"bind:viewPager"})
+    @BindingAdapter({ "bind:viewPager" })
     public static void setUpWithViewPager(TabLayout tabLayout, ViewPager viewPager) {
         tabLayout.setupWithViewPager(viewPager, true);
     }
 
     @BindingAdapter("bind:headerNavigation")
     public static void setHeaderNavigation(NavigationView view, User user) {
-        HeaderBinding binding =
-            HeaderBinding.inflate(LayoutInflater.from(view.getContext()));
+        HeaderBinding binding = HeaderBinding.inflate(LayoutInflater.from(view.getContext()));
         binding.setUser(user);
         binding.executePendingBindings();
         view.addHeaderView(binding.getRoot());

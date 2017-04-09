@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.activity.auth.forgotpassword;
+package com.haui.tuannv.qldv.ui.auth.forgotpassword;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

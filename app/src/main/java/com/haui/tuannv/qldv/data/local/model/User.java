@@ -1,6 +1,5 @@
 package com.haui.tuannv.qldv.data.local.model;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,7 +10,7 @@ import com.haui.tuannv.qldv.BR;
 /**
  * Created by tuanbg on 3/31/17.
  */
-public class User extends BaseObservable implements Parcelable {
+public class User extends BaseObject implements Parcelable {
     @SerializedName("name")
     private String mName;
     @SerializedName("account")
@@ -22,10 +21,14 @@ public class User extends BaseObservable implements Parcelable {
     private String mEmail;
 
     protected User(Parcel in) {
+        super(in);
         mName = in.readString();
         mAccount = in.readString();
         mPassword = in.readString();
         mEmail = in.readString();
+    }
+
+    public User() {
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -90,8 +93,5 @@ public class User extends BaseObservable implements Parcelable {
         dest.writeString(mAccount);
         dest.writeString(mPassword);
         dest.writeString(mEmail);
-    }
-
-    public User() {
     }
 }

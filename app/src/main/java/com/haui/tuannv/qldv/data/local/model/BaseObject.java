@@ -76,4 +76,7 @@ public class BaseObject extends BaseObservable implements Parcelable {
         dest.writeString(mId);
         dest.writeString(mCreatedAt);
     }
+
+    public BaseObject() {
+    }
 }
