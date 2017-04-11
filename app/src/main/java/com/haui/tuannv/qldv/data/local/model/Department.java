@@ -1,19 +1,20 @@
 package com.haui.tuannv.qldv.data.local.model;
 
-import android.os.Parcel;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
+import com.haui.tuannv.qldv.BR;
+import java.io.Serializable;
 
-public class Department extends BaseObject {
+public class Department extends BaseObservable implements Serializable {
     @SerializedName("name")
     private String mName;
     @SerializedName("code")
     private String mCode;
     @SerializedName("user_id")
     private String mUserId;
-
-    protected Department(Parcel in) {
-        super(in);
-    }
+    @SerializedName("id")
+    private String mId;
 
     public String getName() {
         return mName;
@@ -37,6 +38,16 @@ public class Department extends BaseObject {
 
     public void setUserId(String userId) {
         mUserId = userId;
+    }
+
+    @Bindable
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String id) {
+        this.mId = id;
+        notifyPropertyChanged(BR.id);
     }
 
     @Override

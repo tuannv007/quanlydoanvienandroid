@@ -12,9 +12,5 @@ public interface LoginListener {
 
     void forgotPassword();
 
-    void showDialog();
-
-    void dismissDialog();
-
     void setChecked(boolean b);
 }

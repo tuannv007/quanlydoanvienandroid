@@ -39,9 +39,5 @@ public class Utils {
         public static final String BASE_URL = "http://tuannv007.xyz/";
     }
 
-    public class SharePreference {
-        public static final String SHARE_PRE_NAME = "SHARE_PRE_NAME";
-        public static final String SHARE_PRE_USERNAME = "PREF_USERNAME";
-        public static final String SHARE_PRE_PASSWORD = "PREF_PASSWORD";
-    }
+
 }

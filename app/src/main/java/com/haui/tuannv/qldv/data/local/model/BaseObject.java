@@ -12,15 +12,13 @@ import com.haui.tuannv.qldv.BR;
  * Created by tuanbg on 4/9/17.
  */
 public class BaseObject extends BaseObservable implements Parcelable {
-    @SerializedName("id")
-    private String mId;
+
     @SerializedName("created_at")
     private String mCreatedAt;
     @SerializedName("updated_at")
     private Object mUpdatedAt;
 
     protected BaseObject(Parcel in) {
-        mId = in.readString();
         mCreatedAt = in.readString();
     }
 
@@ -36,15 +34,6 @@ public class BaseObject extends BaseObservable implements Parcelable {
         }
     };
 
-    @Bindable
-    public String getId() {
-        return mId;
-    }
-
-    public void setId(String id) {
-        this.mId = id;
-        notifyPropertyChanged(BR.id);
-    }
 
     @Bindable
     public String getCreatedAt() {
@@ -73,7 +62,6 @@ public class BaseObject extends BaseObservable implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mId);
         dest.writeString(mCreatedAt);
     }
 

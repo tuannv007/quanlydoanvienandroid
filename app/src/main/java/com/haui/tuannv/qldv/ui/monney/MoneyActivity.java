@@ -13,6 +13,12 @@ import com.haui.tuannv.qldv.data.local.model.Department;
 import com.haui.tuannv.qldv.data.local.model.Fee;
 import com.haui.tuannv.qldv.data.local.model.SchoolYear;
 import com.haui.tuannv.qldv.databinding.ActivityMoneyBinding;
+import com.haui.tuannv.qldv.ui.monney.classes.ClassesFragment;
+import com.haui.tuannv.qldv.util.ActivityUtil;
+
+import static com.haui.tuannv.qldv.util.Constant.ConstBundle.BUNDLE_DEPARTMENT;
+import static com.haui.tuannv.qldv.util.Constant.ConstBundle.BUNDLE_FEE;
+import static com.haui.tuannv.qldv.util.Constant.ConstBundle.BUNDLE_SCHOOLYEAR;
 
 /**
  * Created by tuanbg on 4/11/17.
@@ -21,15 +27,16 @@ import com.haui.tuannv.qldv.databinding.ActivityMoneyBinding;
 public class MoneyActivity extends AppCompatActivity {
     private ActivityMoneyBinding mBinding;
     private Toolbar mToolbar;
+    private Department mDepartment;
+    private SchoolYear mSchoolYear;
+    private Fee mFee;
 
     public static Intent getProfileIntent(Context context, Department department,
             SchoolYear schoolYear, Fee fee) {
         Intent intent = new Intent(context, MoneyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("department", department);
-        bundle.putParcelable("shoolyear", schoolYear);
-        bundle.putParcelable("fee", fee);
-        intent.putExtras(bundle);
+        intent.putExtra(BUNDLE_DEPARTMENT, department);
+        intent.putExtra(BUNDLE_SCHOOLYEAR, schoolYear);
+        intent.putExtra(BUNDLE_FEE, fee);
         return intent;
     }
 
@@ -37,8 +44,10 @@ public class MoneyActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_money);
-        mBinding.getRoot();
         initToolBar();
+        getDataFromIntent();
+        ActivityUtil.addFragmentToActivity(this, R.id.frame_layout,
+                ClassesFragment.newInstance(mDepartment, mSchoolYear, mFee));
     }
 
     public void initToolBar() {
@@ -48,6 +57,14 @@ public class MoneyActivity extends AppCompatActivity {
         if (getSupportActionBar() == null) return;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.title_manager_classes));
+    }
+
+    public void getDataFromIntent() {
+        if (getIntent() == null) return;
+        Bundle bundle = getIntent().getExtras();
+        mDepartment = (Department) bundle.getSerializable(BUNDLE_DEPARTMENT);
+        mSchoolYear = (SchoolYear) getIntent().getSerializableExtra(BUNDLE_SCHOOLYEAR);
+        mFee = (Fee) getIntent().getSerializableExtra(BUNDLE_FEE);
     }
 
     @Override

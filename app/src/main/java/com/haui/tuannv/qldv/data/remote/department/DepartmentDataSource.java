@@ -7,4 +7,6 @@ import com.haui.tuannv.qldv.data.DataCallback;
  */
 public interface DepartmentDataSource {
     void getDepartment(DataCallback callback);
+
+    void getClasses(String departmentId, String schoolId, DataCallback callback);
 }

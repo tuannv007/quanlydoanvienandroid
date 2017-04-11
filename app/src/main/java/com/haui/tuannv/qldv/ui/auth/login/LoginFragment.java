@@ -62,12 +62,6 @@ public class LoginFragment extends Fragment implements LoginListener {
     }
 
     @Override
-    public void showDialog() {
-        if (mDialog == null) mDialog = new TProgressDialog(getActivity());
-        mDialog.show();
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
         if (mBinding.checkkedTextview.isChecked()) {
@@ -76,11 +70,6 @@ public class LoginFragment extends Fragment implements LoginListener {
         } else {
             mViewModel.saveDataLogin("", "");
         }
-    }
-
-    @Override
-    public void dismissDialog() {
-        if (mDialog != null && mDialog.isShowing()) mDialog.dismiss();
     }
 
     @Override

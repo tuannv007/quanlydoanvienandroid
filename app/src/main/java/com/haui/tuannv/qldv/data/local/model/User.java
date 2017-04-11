@@ -1,16 +1,15 @@
 package com.haui.tuannv.qldv.data.local.model;
 
+import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 import com.haui.tuannv.qldv.BR;
+import java.io.Serializable;
 
 /**
  * Created by tuanbg on 3/31/17.
  */
-public class User extends BaseObject implements Parcelable {
+public class User extends BaseObservable implements Serializable {
     @SerializedName("name")
     private String mName;
     @SerializedName("account")
@@ -20,28 +19,8 @@ public class User extends BaseObject implements Parcelable {
     @SerializedName("email")
     private String mEmail;
 
-    protected User(Parcel in) {
-        super(in);
-        mName = in.readString();
-        mAccount = in.readString();
-        mPassword = in.readString();
-        mEmail = in.readString();
-    }
-
     public User() {
     }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     @Bindable
     public String getName() {
@@ -81,17 +60,5 @@ public class User extends BaseObject implements Parcelable {
     public void setEmail(String email) {
         this.mEmail = email;
         notifyPropertyChanged(BR.email);
-    }
-
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mName);
-        dest.writeString(mAccount);
-        dest.writeString(mPassword);
-        dest.writeString(mEmail);
     }
 }

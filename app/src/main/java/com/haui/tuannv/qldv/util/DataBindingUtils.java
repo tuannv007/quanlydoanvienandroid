@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.HeaderBinding;
+import com.haui.tuannv.qldv.ui.monney.classes.ClassesFragment;
 
 /**
  * Created by tuanbg
@@ -87,5 +89,20 @@ public class DataBindingUtils {
         binding.setUser(user);
         binding.executePendingBindings();
         view.addHeaderView(binding.getRoot());
+    }
+
+    @BindingAdapter({ "bind:classesFragment" })
+    public static void refreshLayout(SwipeRefreshLayout view, final ClassesFragment classes) {
+        view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                classes.loadData(classes.getDepartmentId(), classes.getSchoolId());
+            }
+        });
+    }
+
+    @BindingAdapter({ "bind:refreshSwipeLayout" })
+    public static void setRefreshrSwipeLayout(SwipeRefreshLayout view, boolean isReFresh) {
+        view.setRefreshing(isReFresh);
     }
 }

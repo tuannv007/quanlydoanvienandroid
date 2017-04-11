@@ -1,6 +1,7 @@
 package com.haui.tuannv.qldv.data.remote.department;
 
 import com.haui.tuannv.qldv.data.DataCallback;
+import com.haui.tuannv.qldv.data.local.model.DataClasses;
 import com.haui.tuannv.qldv.data.local.model.DataDepartment;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 
@@ -36,5 +37,22 @@ public class DepartmentRepository implements DepartmentDataSource {
                 callback.onError(msg);
             }
         });
+    }
+
+    @Override
+    public void getClasses(String departmentId, String schoolId, final DataCallback callback) {
+        if (callback == null) return;
+        mRemoteDataSource.getClasses(departmentId, schoolId,
+                new DataCallback<ResponseItem<DataClasses>>() {
+                    @Override
+                    public void onSuccess(ResponseItem<DataClasses> data) {
+                        callback.onSuccess(data);
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+                        callback.onError(msg);
+                    }
+                });
     }
 }

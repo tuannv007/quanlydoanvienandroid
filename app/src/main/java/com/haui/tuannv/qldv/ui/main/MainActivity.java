@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
-
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.broadcast.NetworkReceiver;
 import com.haui.tuannv.qldv.data.local.model.User;
@@ -20,12 +19,13 @@ import com.haui.tuannv.qldv.ui.revenue.RevenueFragment;
 import com.haui.tuannv.qldv.ui.spend.SpendFragment;
 import com.haui.tuannv.qldv.ui.statistical.StatisticalFragment;
 import com.haui.tuannv.qldv.util.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.haui.tuannv.qldv.util.Constant.BUNDLE_USER;
+
 public class MainActivity extends AppCompatActivity
-    implements NetworkReceiver.NetworkReceiverListener {
+        implements NetworkReceiver.NetworkReceiverListener {
     private RelativeLayout mLayout;
     private ActivityMainBinding mBinding;
     private Toolbar mToolbar;
@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity
     private User mUser;
 
     public static Intent getDataIntent(Context context, User user) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("user", user);
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtras(bundle);
+        intent.putExtra(BUNDLE_USER, user);
         return intent;
     }
 
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 
     private void getDataFromIntent() {
         if (getIntent().getExtras() == null) return;
-        mUser = getIntent().getExtras().getParcelable("user");
+        mUser = (User) getIntent().getExtras().getSerializable(BUNDLE_USER);
     }
 
     public void init() {

@@ -7,23 +7,26 @@ import com.haui.tuannv.qldv.data.local.model.DataUserLogin;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.data.remote.login.LoginRepository;
+import com.haui.tuannv.qldv.ui.BaseViewModel;
 
-import static com.haui.tuannv.qldv.util.Utils.SharePreference.SHARE_PRE_NAME;
-import static com.haui.tuannv.qldv.util.Utils.SharePreference.SHARE_PRE_PASSWORD;
-import static com.haui.tuannv.qldv.util.Utils.SharePreference.SHARE_PRE_USERNAME;
+import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_NAME;
+import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_PASSWORD;
+import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_USERNAME;
 
 /**
  * Created by tuanbg on 3/31/17.
  */
-public class LoginViewModel {
+public class LoginViewModel extends BaseViewModel {
     private SharedPreferences mSharedpreferences;
     private LoginListener mListener;
     private LoginRepository mRepository;
     private User mUser = new User();
+    private Context mContext;
 
     public LoginViewModel(Context context, LoginListener listener,
             LoginRepository loginRepository) {
         mListener = listener;
+        mContext = context;
         mRepository = loginRepository;
         mSharedpreferences = context.getSharedPreferences(SHARE_PRE_NAME, Context.MODE_PRIVATE);
         if (mSharedpreferences != null) {
@@ -38,7 +41,7 @@ public class LoginViewModel {
     }
 
     public void login() {
-        mListener.showDialog();
+        showDialog(mContext);
         mRepository.login(mUser.getAccount(), mUser.getPassword(),
                 new DataCallback<ResponseItem<DataUserLogin>>() {
                     @Override
@@ -46,17 +49,17 @@ public class LoginViewModel {
                         if (data == null) return;
                         if (data.getData() == null) {
                             mListener.loginError(data.getMessage());
-                            mListener.dismissDialog();
+                            hideDialog();
                             return;
                         }
                         mListener.loginSuccess(data.getData().getUser());
-                        mListener.dismissDialog();
+                        hideDialog();
                     }
 
                     @Override
                     public void onError(String msg) {
                         mListener.loginError(msg);
-                        mListener.dismissDialog();
+                        hideDialog();
                     }
                 });
     }
