@@ -1,12 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <data>
+        <variable
+            name="fragment"
+            type="com.haui.tuannv.qldv.ui.statistical.StatisticalFragment"
+            />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_margin="@dimen/dp_10"
+            >
+            <EditText
+                android:id="@+id/edit_year"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:hint="@string/mes_enter_year"
+                android:inputType="number"
+                android:maxLength="4"
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_weight="1"
+                android:background="@color/color_blue_800"
+                android:onClick="@{() -> fragment.getData() }"
+                android:text="@string/title_filter"
+                android:textAllCaps="false"
+                android:textColor="@color/color_white"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/title_number_money"
+                android:textSize="@dimen/sp_17"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_weight="1"
+                android:text="@{fragment.inputTotal}"
+                android:textColor="@color/color_blue_800"
+                android:textSize="@dimen/sp_17"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/title_number_revenue"
+                android:textSize="@dimen/sp_17"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_weight="1"
+                android:text="@{fragment.outputTotal}"
+                android:textColor="@color/color_blue_800"
+                android:textSize="@dimen/sp_17"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/title_number_"
+                android:textSize="@dimen/sp_17"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_weight="1"
+                android:text="@{String.valueOf(fragment.result)}"
+                android:textColor="@color/color_blue_800"
+                android:textSize="@dimen/sp_17"
+                />
+        </LinearLayout>
     </LinearLayout>
 </layout>
 

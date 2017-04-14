@@ -56,6 +56,10 @@ public class RevenueFragment extends Fragment implements RevenueListener {
     }
 
     public void getData() {
+        if (mBinding.editYear.getText().toString().isEmpty()) {
+            ActivityUtil.showToast(getActivity(), getString(R.string.msg_requai_year));
+            return;
+        }
         mViewModel.getData(Integer.parseInt(mBinding.editYear.getText().toString()));
     }
 

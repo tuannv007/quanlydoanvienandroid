@@ -30,4 +30,8 @@
     <string name="title_filter">Lọc</string>
     <string name="title_logout">Đăng xuất</string>
     <string name="title_introduce">Giới thiệu</string>
+    <string name="title_number_money">Tổng tiền thu (VND): </string>
+    <string name="title_number_revenue">Tổng tiền chi (VND): </string>
+    <string name="title_number_">Tổng tiền còn lại (VND): </string>
+    <string name="msg_requai_year">Yêu cầu nhập năm</string>
 </resources>
