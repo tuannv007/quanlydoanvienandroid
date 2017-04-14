@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity
 
     public void init() {
         List<Fragment> listFragments = new ArrayList<>();
-        listFragments.add(RevenueFragment.newInstance());
-        listFragments.add(SpendFragment.newInstance());
         listFragments.add(StatisticalFragment.newInstance());
+        listFragments.add(SpendFragment.newInstance());
+        listFragments.add(RevenueFragment.newInstance());
         String[] titles = getResources().getStringArray(R.array.array_title_fragment);
         mAdapter = new ViewPagerAdapter(getSupportFragmentManager(), listFragments, titles);
     }

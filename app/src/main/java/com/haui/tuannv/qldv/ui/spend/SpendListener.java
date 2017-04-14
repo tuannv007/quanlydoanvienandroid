@@ -19,4 +19,6 @@ public interface SpendListener {
     void dismissDialog();
 
     void getClasseFromDepartment(Department department, SchoolYear schoolYear, Fee fee);
+
+    void openOtherSpend();
 }

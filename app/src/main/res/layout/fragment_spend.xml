@@ -17,6 +17,7 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -195,9 +196,9 @@
             <com.github.clans.fab.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{()-> viewmodel.openOtherSpend()}"
                 android:src="@drawable/fab_add"
-                fab:fab_colorNormal="@android:color/white"
-                fab:fab_colorPressed="@android:color/white"
+                fab:fab_colorNormal="@color/color_blue_800"
                 fab:fab_label="@string/title_spend_other"
                 fab:fab_size="mini"
                 />

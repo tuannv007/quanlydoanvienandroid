@@ -18,4 +18,16 @@
     <string name="save_password">Lưu mật khẩu</string>
     <string name="title_hcm">Đoàn thanh niên cộng sản Hồ Chí Minh</string>
     <string name="title_manager_classes">Quản lý lớp</string>
+    <string name="title_name_spend">Tên khoản thu</string>
+    <string name="title_save">Lưu khoản thu </string>
+    <string name="title_year_spend">Năm thu</string>
+    <string name="title_money">Khoản tiền</string>
+    <string name="title_note">Ghi chú</string>
+    <string name="mes_title_other_spend_empty">Tiêu đề không được để trống</string>
+    <string name="mes_des_other_spend_empty">Mô tả khồng được để trống</string>
+    <string name="mes_amount_">Số tiền cần lớn hơn 0</string>
+    <string name="mes_enter_year">Yêu cầu nhập năm</string>
+    <string name="title_filter">Lọc</string>
+    <string name="title_logout">Đăng xuất</string>
+    <string name="title_introduce">Giới thiệu</string>
 </resources>

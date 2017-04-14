@@ -4,14 +4,15 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/logout"
-            android:checked="false"
-            android:icon="@drawable/ic_account_circle_black_24dp"
-            android:title="@string/app_name"/>
-        <item
             android:id="@+id/inbox"
             android:checked="false"
-            android:icon="@drawable/ic_lock_black_24px"
-            android:title="@string/app_name"/>
+            android:icon="@drawable/ic_import_contacts_black_24px"
+            android:title="@string/title_introduce"/>
+        <item
+            android:id="@+id/logout"
+            android:checked="false"
+            android:icon="@drawable/ic_swap_horiz_black_24px"
+            android:title="@string/title_logout"/>
+
     </group>
 </menu>

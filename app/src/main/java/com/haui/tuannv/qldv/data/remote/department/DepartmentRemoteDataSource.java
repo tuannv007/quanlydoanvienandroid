@@ -4,6 +4,7 @@ import com.haui.tuannv.qldv.data.DataCallback;
 import com.haui.tuannv.qldv.data.ServiceGenerator;
 import com.haui.tuannv.qldv.data.local.model.DataClasses;
 import com.haui.tuannv.qldv.data.local.model.DataDepartment;
+import com.haui.tuannv.qldv.data.local.model.DataRevenue;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.network.Main;
 import retrofit2.Call;
@@ -54,6 +55,43 @@ public class DepartmentRemoteDataSource implements DepartmentDataSource {
 
                     @Override
                     public void onFailure(Call<ResponseItem<DataClasses>> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void addOtherSpend(String title, int year, double amount, String description,
+            final DataCallback callback) {
+        ServiceGenerator.createService(Main.DemartmentService.class)
+                .addOtherSpend(title, year, amount, description)
+                .enqueue(new Callback<ResponseItem>() {
+                    @Override
+                    public void onResponse(Call<ResponseItem> call,
+                            Response<ResponseItem> response) {
+                        callback.onSuccess(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseItem> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void getAllRevenue(int year, final DataCallback callback) {
+        ServiceGenerator.createService(Main.DemartmentService.class)
+                .getAllRevenue(year)
+                .enqueue(new Callback<ResponseItem<DataRevenue>>() {
+                    @Override
+                    public void onResponse(Call<ResponseItem<DataRevenue>> call,
+                            Response<ResponseItem<DataRevenue>> response) {
+                        callback.onSuccess(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseItem<DataRevenue>> call, Throwable t) {
                         callback.onError(t.getMessage());
                     }
                 });

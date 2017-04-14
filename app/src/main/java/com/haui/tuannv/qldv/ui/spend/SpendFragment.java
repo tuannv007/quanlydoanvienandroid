@@ -17,6 +17,7 @@ import com.haui.tuannv.qldv.data.local.model.SchoolYear;
 import com.haui.tuannv.qldv.data.remote.department.DepartmentRepository;
 import com.haui.tuannv.qldv.databinding.FragmentSpendBinding;
 import com.haui.tuannv.qldv.ui.monney.MoneyActivity;
+import com.haui.tuannv.qldv.ui.monney.otherspend.OtherSpendActivity;
 import com.haui.tuannv.qldv.util.ActivityUtil;
 import com.haui.tuannv.qldv.util.TProgressDialog;
 
@@ -91,5 +92,10 @@ public class SpendFragment extends Fragment implements SpendListener {
     @Override
     public void getClasseFromDepartment(Department department, SchoolYear schoolYear, Fee fee) {
         startActivity(MoneyActivity.getProfileIntent(getActivity(), department, schoolYear, fee));
+    }
+
+    @Override
+    public void openOtherSpend() {
+        startActivity(OtherSpendActivity.getSpendIntent(getActivity()));
     }
 }

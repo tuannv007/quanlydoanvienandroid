@@ -1,23 +1,15 @@
 package com.haui.tuannv.qldv.util;
 
 import android.databinding.BindingAdapter;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.HeaderBinding;
 import com.haui.tuannv.qldv.ui.monney.classes.ClassesFragment;
@@ -27,28 +19,6 @@ import com.haui.tuannv.qldv.ui.monney.classes.ClassesFragment;
  * <></>
  */
 public class DataBindingUtils {
-    @BindingAdapter({ "bind:imageResource" })
-    public static void loadImage(ImageView view, Drawable drawable) {
-        view.setImageDrawable(drawable);
-    }
-
-    @BindingAdapter({ "bind:imageDrawable" })
-    public static void loadImageDrawable(ImageButton view, Drawable source) {
-        Glide.with(view.getContext())
-                .load(source)
-                .asBitmap()
-                .centerCrop()
-                .into(new BitmapImageViewTarget(view) {
-                    @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable =
-                                RoundedBitmapDrawableFactory.create(view.getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        view.setImageDrawable(circularBitmapDrawable);
-                    }
-                });
-    }
-
     @BindingAdapter({ "bind:adapterViewPager" })
     public static void setViewPagerAdapter(ViewPager view, FragmentPagerAdapter adapter) {
         view.setAdapter(adapter);
@@ -69,13 +39,6 @@ public class DataBindingUtils {
     @BindingAdapter({ "bind:setErrorEditText" })
     public static void setError(final EditText editText, final String msg) {
         if (TextUtils.isEmpty(editText.getText().toString())) editText.setError(msg);
-    }
-
-    @BindingAdapter({ "bind:setErrorEmail" })
-    public static void setErrorEmail(final EditText editText, final String msg) {
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editText.getText()).matches()) {
-            editText.setError(msg);
-        }
     }
 
     @BindingAdapter({ "bind:viewPager" })
@@ -105,4 +68,5 @@ public class DataBindingUtils {
     public static void setRefreshrSwipeLayout(SwipeRefreshLayout view, boolean isReFresh) {
         view.setRefreshing(isReFresh);
     }
+
 }

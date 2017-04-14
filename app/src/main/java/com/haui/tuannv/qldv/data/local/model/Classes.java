@@ -1,8 +1,9 @@
 package com.haui.tuannv.qldv.data.local.model;
 
+import android.databinding.BaseObservable;
 import com.google.gson.annotations.SerializedName;
 
-public class Classes extends BaseObject {
+public class Classes extends BaseObservable {
     @SerializedName("id")
     private String id;
     @SerializedName("name")

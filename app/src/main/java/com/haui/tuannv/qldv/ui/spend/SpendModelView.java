@@ -68,4 +68,7 @@ public class SpendModelView {
     public void getClasse(Department department, SchoolYear schoolYear, Fee fee) {
         mListener.getClasseFromDepartment(department, schoolYear, fee);
     }
+    public void openOtherSpend(){
+        mListener.openOtherSpend();
+    }
 }

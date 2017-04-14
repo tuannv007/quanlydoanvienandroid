@@ -9,4 +9,9 @@ public interface DepartmentDataSource {
     void getDepartment(DataCallback callback);
 
     void getClasses(String departmentId, String schoolId, DataCallback callback);
+
+    void addOtherSpend(String title, int year, double amount, String description,
+            DataCallback callback);
+
+    void getAllRevenue(int year, DataCallback callback);
 }

@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".ui.main.MainActivity"/>
         <activity android:name=".ui.monney.MoneyActivity"/>
+        <activity android:name=".ui.monney.otherspend.OtherSpendActivity"/>
 
         <receiver android:name=".broadcast.NetworkReceiver">
             <intent-filter>
