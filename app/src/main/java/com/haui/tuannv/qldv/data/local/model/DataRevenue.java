@@ -38,6 +38,7 @@ public class DataRevenue extends BaseObservable {
 
     @Bindable
     public int getRestTotal() {
+        if (mRestTotal < 0) return 0;
         return mRestTotal;
     }
 

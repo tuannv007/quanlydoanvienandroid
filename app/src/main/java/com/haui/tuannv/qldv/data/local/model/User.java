@@ -18,6 +18,18 @@ public class User extends BaseObservable implements Serializable {
     private String mPassword;
     @SerializedName("email")
     private String mEmail;
+    @SerializedName("id")
+    private int mId;
+
+    @Bindable
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        mId = id;
+        notifyPropertyChanged(BR.id);
+    }
 
     public User() {
     }

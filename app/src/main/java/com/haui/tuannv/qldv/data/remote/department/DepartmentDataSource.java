@@ -14,4 +14,7 @@ public interface DepartmentDataSource {
             DataCallback callback);
 
     void getAllRevenue(int year, DataCallback callback);
+
+    void addNewRevenue(String title, int userId, double amount, String description, String date,
+            DataCallback callback);
 }

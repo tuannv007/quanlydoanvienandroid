@@ -87,4 +87,21 @@ public class DepartmentRepository implements DepartmentDataSource {
             }
         });
     }
+
+    @Override
+    public void addNewRevenue(String title, int userId, double amount, String description,
+            String date, final DataCallback callback) {
+        mRemoteDataSource.addNewRevenue(title, userId, amount, description, date,
+                new DataCallback<ResponseItem>() {
+                    @Override
+                    public void onSuccess(ResponseItem data) {
+                        callback.onSuccess(data);
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+                        callback.onError(msg);
+                    }
+                });
+    }
 }

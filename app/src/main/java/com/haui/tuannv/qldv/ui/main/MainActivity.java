@@ -43,12 +43,12 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        getDataFromIntent();
         mBinding.setActivity(this);
         mLayout = mBinding.mainActivity;
         NetworkReceiver.setNetworkReceiver(this);
         initToolBar();
         init();
-        getDataFromIntent();
     }
 
     private void getDataFromIntent() {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         List<Fragment> listFragments = new ArrayList<>();
         listFragments.add(StatisticalFragment.newInstance());
         listFragments.add(SpendFragment.newInstance());
-        listFragments.add(RevenueFragment.newInstance());
+        listFragments.add(RevenueFragment.newInstance(mUser));
         String[] titles = getResources().getStringArray(R.array.array_title_fragment);
         mAdapter = new ViewPagerAdapter(getSupportFragmentManager(), listFragments, titles);
     }

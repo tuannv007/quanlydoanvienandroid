@@ -96,4 +96,23 @@ public class DepartmentRemoteDataSource implements DepartmentDataSource {
                     }
                 });
     }
+
+    @Override
+    public void addNewRevenue(String title, int userId, double amount, String description,
+            String date, final DataCallback callback) {
+        ServiceGenerator.createService(Main.DemartmentService.class)
+                .addNewRevenue(title, userId, amount, description, date)
+                .enqueue(new Callback<ResponseItem>() {
+                    @Override
+                    public void onResponse(Call<ResponseItem> call,
+                            Response<ResponseItem> response) {
+                        callback.onSuccess(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseItem> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                    }
+                });
+    }
 }

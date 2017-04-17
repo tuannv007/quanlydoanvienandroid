@@ -34,4 +34,7 @@
     <string name="title_number_revenue">Tổng tiền chi (VND): </string>
     <string name="title_number_">Tổng tiền còn lại (VND): </string>
     <string name="msg_requai_year">Yêu cầu nhập năm</string>
+    <string name="title_save_output">Lưu khoản chi</string>
+    <string name="msg_no_connect">Không thể lấy dữ liệu</string>
+    <string name="new_renvenue">Thêm khoản chi</string>
 </resources>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="viewmodel"
-            type="com.haui.tuannv.qldv.ui.monney.otherspend.OtherSpendViewModel"
+            type="com.haui.tuannv.qldv.ui.revenue.newrevenue.NewRevenueViewModel"
             />
     </data>
     <LinearLayout
@@ -16,11 +15,10 @@
             layout="@layout/partial_toolbar"
             android:id="@+id/toolbar"
             />
-
         <LinearLayout
-            android:layout_margin="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
             android:orientation="vertical"
             >
             <android.support.design.widget.TextInputLayout
@@ -31,22 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/title_name_spend"
-                    android:text="@={viewmodel.otherSpend.title}"
-                    android:textSize="@dimen/sp_15"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_50"
-                >
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/title_year_spend"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:text="@={`` + viewmodel.otherSpend.year}"
+                    android:text="@={viewmodel.newRevenue.title}"
                     android:textSize="@dimen/sp_15"
                     />
             </android.support.design.widget.TextInputLayout>
@@ -59,7 +42,7 @@
                     android:layout_height="match_parent"
                     android:hint="@string/title_money"
                     android:inputType="number"
-                    android:text="@={`` + viewmodel.otherSpend.amount}"
+                    android:text="@={`` + viewmodel.newRevenue.amount}"
                     android:textSize="@dimen/sp_15"
                     />
             </android.support.design.widget.TextInputLayout>
@@ -71,20 +54,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/title_note"
-                    android:text="@={viewmodel.otherSpend.desciption}"
+                    android:text="@={viewmodel.newRevenue.desciption}"
                     android:textSize="@dimen/sp_15"
                     />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
-
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_10"
             android:background="@color/color_blue_800"
-            android:onClick="@{() -> viewmodel.addOtherSpend()}"
-            android:text="@string/title_save"
+            android:onClick="@{() -> viewmodel.addRevenue()}"
+            android:text="@string/title_save_output"
             android:textAllCaps="false"
             android:textColor="@color/color_white"
             android:textSize="@dimen/sp_17"

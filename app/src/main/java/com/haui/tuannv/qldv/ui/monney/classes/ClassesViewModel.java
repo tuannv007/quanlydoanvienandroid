@@ -27,7 +27,6 @@ public class ClassesViewModel extends BaseViewModel {
 
     public void getClassesFromDepartment(String departmentId, String schoolYearId) {
         mIsRefresh.set(true);
-        showDialog(mContext);
         mRepository.getClasses(departmentId, schoolYearId,
                 new DataCallback<ResponseItem<DataClasses>>() {
                     @Override
@@ -40,7 +39,6 @@ public class ClassesViewModel extends BaseViewModel {
                     @Override
                     public void onError(String msg) {
                         mListener.getDataError(msg);
-                        hideDialog();
                         mIsRefresh.set(false);
                     }
                 });

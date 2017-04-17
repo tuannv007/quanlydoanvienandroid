@@ -6,6 +6,7 @@ import com.haui.tuannv.qldv.data.local.model.DataRevenue;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.data.remote.department.DepartmentRepository;
 import com.haui.tuannv.qldv.ui.BaseViewModel;
+import java.util.Calendar;
 
 /**
  * Created by tuanbg on 4/14/17.
@@ -38,5 +39,9 @@ public class RevenueViewModel extends BaseViewModel {
                 hideDialog();
             }
         });
+    }
+
+    public int getYear() {
+        return Calendar.getInstance().get(Calendar.YEAR);
     }
 }

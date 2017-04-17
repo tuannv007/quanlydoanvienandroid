@@ -21,6 +21,7 @@
         <activity android:name=".ui.main.MainActivity"/>
         <activity android:name=".ui.monney.MoneyActivity"/>
         <activity android:name=".ui.monney.otherspend.OtherSpendActivity"/>
+        <activity android:name=".ui.revenue.newrevenue.NewRevenueActivity"/>
 
         <receiver android:name=".broadcast.NetworkReceiver">
             <intent-filter>

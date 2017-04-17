@@ -30,5 +30,11 @@ public class Main {
 
         @GET("/api/output/index")
         Call<ResponseItem<DataRevenue>> getAllRevenue(@Query("year") int year);
+
+        @POST("/api/output/create")
+        @FormUrlEncoded
+        Call<ResponseItem> addNewRevenue(@Field("title") String title, @Field("user_id") int userId,
+                @Field("amount") double amount, @Field("description") String description,
+                @Field("paid_date") String date);
     }
 }
