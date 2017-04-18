@@ -1,13 +1,24 @@
 package com.haui.tuannv.qldv.ui.revenue;
 
-import com.haui.tuannv.qldv.data.local.model.DataRevenue;
+import com.haui.tuannv.qldv.data.local.model.DataDepartment;
+import com.haui.tuannv.qldv.data.local.model.Department;
+import com.haui.tuannv.qldv.data.local.model.Fee;
+import com.haui.tuannv.qldv.data.local.model.ResponseItem;
+import com.haui.tuannv.qldv.data.local.model.SchoolYear;
 
 /**
- * Created by tuanbg on 4/14/17.
+ * Created by tuanbg on 4/9/17.
  */
-
 public interface RevenueListener {
-    void getDataSuccess(DataRevenue data);
+    void onSuccess(ResponseItem<DataDepartment> data);
 
-    void getDataError(String msg);
+    void onError(String msg);
+
+    void showDialog();
+
+    void dismissDialog();
+
+    void getClasseFromDepartment(Department department, SchoolYear schoolYear, Fee fee);
+
+    void openOtherSpend();
 }

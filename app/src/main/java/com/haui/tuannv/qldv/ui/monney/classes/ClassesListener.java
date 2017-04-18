@@ -1,6 +1,7 @@
 package com.haui.tuannv.qldv.ui.monney.classes;
 
 import com.haui.tuannv.qldv.data.local.model.Classes;
+import com.haui.tuannv.qldv.data.local.model.Fee;
 import java.util.List;
 
 /**
@@ -12,4 +13,6 @@ public interface ClassesListener {
     void getDataSuccess(List<Classes> classes);
 
     void getDataError(String msg);
+
+    void getStudent(Classes classes, Fee fee);
 }

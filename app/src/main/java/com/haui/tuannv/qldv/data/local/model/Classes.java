@@ -2,10 +2,11 @@ package com.haui.tuannv.qldv.data.local.model;
 
 import android.databinding.BaseObservable;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class Classes extends BaseObservable {
+public class Classes extends BaseObservable implements Serializable {
     @SerializedName("id")
-    private String id;
+    private int id;
     @SerializedName("name")
     private String name;
     @SerializedName("code")
@@ -17,11 +18,11 @@ public class Classes extends BaseObservable {
     @SerializedName("school_year_id")
     private String schoolYearId;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

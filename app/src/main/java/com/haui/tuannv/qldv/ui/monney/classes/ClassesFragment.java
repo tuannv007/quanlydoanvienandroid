@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import com.haui.tuannv.qldv.data.local.model.Fee;
 import com.haui.tuannv.qldv.data.local.model.SchoolYear;
 import com.haui.tuannv.qldv.data.remote.department.DepartmentRepository;
 import com.haui.tuannv.qldv.databinding.FragmentClassesBinding;
+import com.haui.tuannv.qldv.ui.monney.MoneyActivity;
+import com.haui.tuannv.qldv.ui.monney.students.StudentFragment;
+import com.haui.tuannv.qldv.util.ActivityUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +37,8 @@ public class ClassesFragment extends Fragment implements ClassesListener {
     private ClassesViewModel mViewModel;
     private String mDepartmentId;
     private String mSchoolId;
-
+    private Fee fee = new Fee();
+    private Department mDepartment;
 
     public static ClassesFragment newInstance(Department department, SchoolYear schoolYear,
             Fee fee) {
@@ -52,7 +57,7 @@ public class ClassesFragment extends Fragment implements ClassesListener {
             @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_classes, container, false);
         getDataFromIntent();
-        mViewModel = new ClassesViewModel(getActivity(), this, DepartmentRepository.getInstance());
+        mViewModel = new ClassesViewModel(this, DepartmentRepository.getInstance());
         mBinding.setFragment(this);
         mBinding.setViewmodel(mViewModel);
         return mBinding.getRoot();
@@ -61,11 +66,11 @@ public class ClassesFragment extends Fragment implements ClassesListener {
     public void getDataFromIntent() {
         Bundle bundle = getArguments();
         if (bundle == null) return;
-        Department department = (Department) bundle.getSerializable(BUNDLE_DEPARTMENT);
+        mDepartment = (Department) bundle.getSerializable(BUNDLE_DEPARTMENT);
         SchoolYear schoolYear = (SchoolYear) bundle.getSerializable(BUNDLE_SCHOOLYEAR);
-        Fee fee = (Fee) bundle.getSerializable(BUNDLE_FEE);
-        if (department == null || schoolYear == null) return;
-        mDepartmentId = department.getId();
+        fee = (Fee) bundle.getSerializable(BUNDLE_FEE);
+        if (mDepartment == null || schoolYear == null) return;
+        mDepartmentId = mDepartment.getId();
         mSchoolId = schoolYear.getId();
     }
 
@@ -77,19 +82,25 @@ public class ClassesFragment extends Fragment implements ClassesListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel.getClassesFromDepartment(mDepartmentId, mSchoolId);
+        ((MoneyActivity) getActivity()).setActionBarTitle(mDepartment.getName());
     }
 
     @Override
     public void getDataSuccess(List<Classes> classes) {
         mClassesList.clear();
         mClassesList.addAll(classes);
-        mAdapter.set(new ClassesAdapter(mClassesList));
-
+        mAdapter.set(new ClassesAdapter(mViewModel, this, mClassesList));
     }
 
     @Override
     public void getDataError(String msg) {
+        ActivityUtil.showToast(getActivity(), getString(R.string.msg_no_connect));
+    }
 
+    @Override
+    public void getStudent(Classes classes, Fee fee) {
+        ActivityUtil.addFragmentToActivity((AppCompatActivity) getActivity(), R.id.frame_layout,
+                StudentFragment.newInstance(classes, fee));
     }
 
     public String getDepartmentId() {
@@ -104,5 +115,7 @@ public class ClassesFragment extends Fragment implements ClassesListener {
         mViewModel.getClassesFromDepartment(departmentId, schoolId);
     }
 
-
+    public Fee getFee() {
+        return fee;
+    }
 }

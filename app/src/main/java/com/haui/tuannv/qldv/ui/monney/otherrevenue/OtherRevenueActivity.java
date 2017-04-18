@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.monney.otherspend;
+package com.haui.tuannv.qldv.ui.monney.otherrevenue;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,20 +18,20 @@ import com.haui.tuannv.qldv.util.ActivityUtil;
  * Created by tuanbg on 4/14/17.
  */
 
-public class OtherSpendActivity extends AppCompatActivity implements OtherSpendListener {
+public class OtherRevenueActivity extends AppCompatActivity implements OtherdListener {
     private ActivityOtherSpendBinding mBinding;
-    private OtherSpendViewModel mViewModel;
+    private OtherViewModel mViewModel;
     private Toolbar mToolbar;
 
     public static Intent getSpendIntent(Context context) {
-        return new Intent(context, OtherSpendActivity.class);
+        return new Intent(context, OtherRevenueActivity.class);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_other_spend);
-        mViewModel = new OtherSpendViewModel(this, this, DepartmentRepository.getInstance());
+        mViewModel = new OtherViewModel(this, this, DepartmentRepository.getInstance());
         mBinding.setViewmodel(mViewModel);
         initToolBar();
     }
@@ -53,7 +53,7 @@ public class OtherSpendActivity extends AppCompatActivity implements OtherSpendL
 
     @Override
     public void getDataError(String msg) {
-        ActivityUtil.showToast(getApplicationContext(), msg);
+        ActivityUtil.showToast(getApplicationContext(), getString(R.string.msg_no_connect));
     }
 
     @Override

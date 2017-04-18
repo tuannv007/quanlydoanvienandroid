@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.haui.tuannv.qldv.ui.monney.otherspend.OtherSpendViewModel"
+            type="com.haui.tuannv.qldv.ui.monney.otherrevenue.OtherViewModel"
             />
     </data>
     <LinearLayout
@@ -18,9 +18,9 @@
             />
 
         <LinearLayout
-            android:layout_margin="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
             android:orientation="vertical"
             >
             <android.support.design.widget.TextInputLayout

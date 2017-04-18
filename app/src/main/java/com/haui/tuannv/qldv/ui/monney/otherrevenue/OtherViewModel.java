@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.monney.otherspend;
+package com.haui.tuannv.qldv.ui.monney.otherrevenue;
 
 import android.content.Context;
 import com.haui.tuannv.qldv.R;
@@ -14,14 +14,14 @@ import java.util.Date;
  * Created by tuanbg on 4/14/17.
  */
 
-public class OtherSpendViewModel extends BaseViewModel {
-    private OtherSpendListener mListener;
+public class OtherViewModel extends BaseViewModel {
+    private OtherdListener mListener;
     private DepartmentRepository mRepository;
     private OtherSpend mOtherSpend = new OtherSpend();
     private Context mContext;
     private Date mDate;
 
-    public OtherSpendViewModel(Context context, OtherSpendListener listener,
+    public OtherViewModel(Context context, OtherdListener listener,
             DepartmentRepository repository) {
         mListener = listener;
         mRepository = repository;

@@ -46,7 +46,7 @@ public class MoneyActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_money);
         initToolBar();
         getDataFromIntent();
-        ActivityUtil.addFragmentToActivity(this, R.id.frame_layout,
+        ActivityUtil.addFragmentToActivityNoBST(this, R.id.frame_layout,
                 ClassesFragment.newInstance(mDepartment, mSchoolYear, mFee));
     }
 
@@ -56,7 +56,7 @@ public class MoneyActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() == null) return;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.title_manager_classes));
+        getSupportActionBar().setTitle(getString(R.string.title_manager_spend));
     }
 
     public void getDataFromIntent() {
@@ -76,5 +76,9 @@ public class MoneyActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 }

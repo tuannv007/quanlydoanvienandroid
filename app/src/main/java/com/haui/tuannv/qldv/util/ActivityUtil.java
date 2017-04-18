@@ -10,11 +10,19 @@ import android.widget.Toast;
  */
 public class ActivityUtil {
     public static void addFragmentToActivity(AppCompatActivity activity, int id,
-                                             Fragment fragment) {
+            Fragment fragment) {
         activity.getSupportFragmentManager()
-            .beginTransaction()
-            .replace(id, fragment)
-            .commit();
+                .beginTransaction()
+                .replace(id, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+    public static void addFragmentToActivityNoBST(AppCompatActivity activity, int id,
+            Fragment fragment) {
+        activity.getSupportFragmentManager()
+                .beginTransaction()
+                .replace(id, fragment)
+                .commit();
     }
 
     public static void showToast(Context context, String message) {

@@ -1,5 +1,7 @@
 package com.haui.tuannv.qldv.ui.statistical;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -14,6 +16,9 @@ import com.haui.tuannv.qldv.data.local.model.DataRevenue;
 import com.haui.tuannv.qldv.data.remote.department.DepartmentRepository;
 import com.haui.tuannv.qldv.databinding.FragmentStatisticalBinding;
 import com.haui.tuannv.qldv.util.ActivityUtil;
+
+import static com.haui.tuannv.qldv.util.Constant.ConstBundle.BUNDLE_KEY_ID;
+import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_NAME;
 
 /**
  * Created by tuanbg on 3/29/17.
@@ -53,7 +58,7 @@ public class StatisticalFragment extends Fragment implements StatisticalListener
 
     @Override
     public void getDataError(String msg) {
-        ActivityUtil.showToast(getActivity(), msg);
+        ActivityUtil.showToast(getActivity(), getString(R.string.msg_no_connect));
     }
 
     public void getData() {
@@ -61,7 +66,8 @@ public class StatisticalFragment extends Fragment implements StatisticalListener
             ActivityUtil.showToast(getActivity(), getString(R.string.msg_requai_year));
             return;
         }
-        mViewModel.getData(Integer.parseInt(mBinding.editYear.getText().toString()));
+        mViewModel.getData(Integer.parseInt(mBinding.editYear.getText().toString()),
+                getIdDepartment());
     }
 
     public ObservableField<String> getInputTotal() {
@@ -74,5 +80,14 @@ public class StatisticalFragment extends Fragment implements StatisticalListener
 
     public ObservableInt getResult() {
         return mResult;
+    }
+
+    public String getIdDepartment() {
+        SharedPreferences sharedPreferences =
+                getActivity().getSharedPreferences(SHARE_PRE_NAME, Context.MODE_PRIVATE);
+        if (sharedPreferences != null) {
+            return sharedPreferences.getString(BUNDLE_KEY_ID, "");
+        }
+        return null;
     }
 }

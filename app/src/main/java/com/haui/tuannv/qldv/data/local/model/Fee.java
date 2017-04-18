@@ -18,7 +18,7 @@ public class Fee extends BaseObservable implements Serializable {
     @SerializedName("user_id")
     private String mUserId;
     @SerializedName("id")
-    private String mId;
+    private int mId;
 
     public String getTitle() {
         return mTitle;
@@ -61,17 +61,17 @@ public class Fee extends BaseObservable implements Serializable {
     }
 
     @Bindable
-    public String getId() {
+    public int getId() {
         return mId;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.mId = id;
         notifyPropertyChanged(BR.id);
     }
 
     @Override
     public String toString() {
-        return mYear;
+        return mTitle;
     }
 }

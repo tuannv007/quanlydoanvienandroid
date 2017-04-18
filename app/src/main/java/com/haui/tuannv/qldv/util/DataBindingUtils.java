@@ -9,10 +9,14 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import com.haui.tuannv.qldv.data.local.model.Student;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.HeaderBinding;
 import com.haui.tuannv.qldv.ui.monney.classes.ClassesFragment;
+import com.haui.tuannv.qldv.ui.monney.students.StudentFragment;
 
 /**
  * Created by tuanbg
@@ -69,4 +73,33 @@ public class DataBindingUtils {
         view.setRefreshing(isReFresh);
     }
 
+    @BindingAdapter("bind:checkedCheckBox")
+    public static void checked(CheckBox view, final Student student) {
+        if (student.getFeePaid() == 1) {
+            view.setChecked(true);
+        } else {
+            view.setChecked(false);
+        }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
+                    student.setFeePaid(1);
+                } else {
+                    student.setFeePaid(0);
+                }
+            }
+        });
+    }
+
+    @BindingAdapter({ "bind:studentFragment" })
+    public static void refreshLayoutStudent(SwipeRefreshLayout view,
+            final StudentFragment student) {
+        view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                student.loadData();
+            }
+        });
+    }
 }

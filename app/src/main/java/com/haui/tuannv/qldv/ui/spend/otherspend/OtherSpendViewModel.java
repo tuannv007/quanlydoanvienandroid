@@ -1,6 +1,7 @@
-package com.haui.tuannv.qldv.ui.revenue.newrevenue;
+package com.haui.tuannv.qldv.ui.spend.otherspend;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.data.DataCallback;
 import com.haui.tuannv.qldv.data.local.model.NewRevenue;
@@ -12,18 +13,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.haui.tuannv.qldv.util.Constant.ConstBundle.BUNDLE_KEY_ID;
+import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_NAME;
+
 /**
  * Created by tuanbg on 4/15/17.
  */
 
-public class NewRevenueViewModel extends BaseViewModel {
-    private NewRevenueListener mListener;
+public class OtherSpendViewModel extends BaseViewModel {
+    private OtherSpendListener mListener;
     private DepartmentRepository mRepository;
     private NewRevenue mNewRevenue = new NewRevenue();
     private int mIdUser;
     private Context mContext;
 
-    public NewRevenueViewModel(Context context, NewRevenueListener listener,
+    public OtherSpendViewModel(Context context, OtherSpendListener listener,
             DepartmentRepository repository, int idUser) {
         mContext = context;
         mListener = listener;
@@ -57,7 +61,7 @@ public class NewRevenueViewModel extends BaseViewModel {
             mNewRevenue.setUserId(mIdUser);
             mRepository.addNewRevenue(mNewRevenue.getTitle(), mNewRevenue.getUserId(),
                     mNewRevenue.getAmount(), mNewRevenue.getDesciption(), mNewRevenue.getDate(),
-                    new DataCallback<ResponseItem>() {
+                    getIdDepartment(), new DataCallback<ResponseItem>() {
                         @Override
                         public void onSuccess(ResponseItem data) {
                             mListener.onSuccess(data);
@@ -81,5 +85,14 @@ public class NewRevenueViewModel extends BaseViewModel {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
         return df.format(c.getTime());
+    }
+
+    public String getIdDepartment() {
+        SharedPreferences sharedPreferences =
+                mContext.getSharedPreferences(SHARE_PRE_NAME, Context.MODE_PRIVATE);
+        if (sharedPreferences != null) {
+            return sharedPreferences.getString(BUNDLE_KEY_ID, "");
+        }
+        return null;
     }
 }

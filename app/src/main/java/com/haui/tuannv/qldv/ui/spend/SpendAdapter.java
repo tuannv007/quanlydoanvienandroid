@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.revenue;
+package com.haui.tuannv.qldv.ui.spend;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
@@ -14,11 +14,11 @@ import java.util.List;
  * Created by tuanbg on 4/14/17.
  */
 
-public class RevenueAdapter extends RecyclerView.Adapter<RevenueAdapter.RevenueViewHolder> {
+public class SpendAdapter extends RecyclerView.Adapter<SpendAdapter.RevenueViewHolder> {
     private List<Payment> mPaymentList = new ArrayList<>();
     private LayoutInflater mInflater;
 
-    public RevenueAdapter(List<Payment> paymentList) {
+    public SpendAdapter(List<Payment> paymentList) {
         mPaymentList = paymentList;
     }
 

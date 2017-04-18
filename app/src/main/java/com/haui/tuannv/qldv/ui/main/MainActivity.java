@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.broadcast.NetworkReceiver;
+import com.haui.tuannv.qldv.data.local.model.DataDepartment;
+import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.ActivityMainBinding;
 import com.haui.tuannv.qldv.ui.revenue.RevenueFragment;
@@ -25,7 +27,7 @@ import java.util.List;
 import static com.haui.tuannv.qldv.util.Constant.BUNDLE_USER;
 
 public class MainActivity extends AppCompatActivity
-        implements NetworkReceiver.NetworkReceiverListener {
+        implements NetworkReceiver.NetworkReceiverListener, MainListener {
     private RelativeLayout mLayout;
     private ActivityMainBinding mBinding;
     private Toolbar mToolbar;
@@ -58,9 +60,9 @@ public class MainActivity extends AppCompatActivity
 
     public void init() {
         List<Fragment> listFragments = new ArrayList<>();
-        listFragments.add(StatisticalFragment.newInstance());
-        listFragments.add(SpendFragment.newInstance());
         listFragments.add(RevenueFragment.newInstance(mUser));
+        listFragments.add(SpendFragment.newInstance(mUser));
+        listFragments.add(StatisticalFragment.newInstance());
         String[] titles = getResources().getStringArray(R.array.array_title_fragment);
         mAdapter = new ViewPagerAdapter(getSupportFragmentManager(), listFragments, titles);
     }
@@ -97,5 +99,15 @@ public class MainActivity extends AppCompatActivity
 
     public User getUser() {
         return mUser;
+    }
+
+    @Override
+    public void onSuccess(ResponseItem<DataDepartment> data) {
+
+    }
+
+    @Override
+    public void onError(String msg) {
+
     }
 }

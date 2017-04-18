@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="fragment"
+            type="com.haui.tuannv.qldv.ui.monney.students.StudentFragment"
+            />
+        <import type="com.haui.tuannv.qldv.util.LayoutManageUtil"/>
+        <variable
+            name="viewmodel"
+            type="com.haui.tuannv.qldv.ui.monney.students.StudentViewModel"
+            />
+    </data>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        bind:refreshSwipeLayout="@{viewmodel.isRefresh}"
+        bind:studentFragment="@{fragment}"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="@{LayoutManageUtil.linear()}"
+                bind:bindAdapter="@{fragment.adapter}"
+                />
+            <Button
+                android:onClick="@{() -> viewmodel.update()}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dp_30"
+                android:background="@color/color_blue_800"
+                android:text="@string/title_update"
+                android:textAllCaps="false"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/sp_15"
+                />
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</layout>

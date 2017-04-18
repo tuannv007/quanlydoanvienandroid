@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.revenue.newrevenue;
+package com.haui.tuannv.qldv.ui.spend.otherspend;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,14 +21,14 @@ import static com.haui.tuannv.qldv.util.Constant.BUNDLE_USER;
  * Created by tuanbg on 4/15/17.
  */
 
-public class NewRevenueActivity extends AppCompatActivity implements NewRevenueListener {
+public class OtherSpendActivity extends AppCompatActivity implements OtherSpendListener {
     private ActivityAddRevenueBinding mBinding;
-    private NewRevenueViewModel mViewModel;
+    private OtherSpendViewModel mViewModel;
     private Toolbar mToolbar;
     private int mIdUser;
 
     public static Intent getNewRenueIntent(Context context, User user) {
-        Intent intent = new Intent(context, NewRevenueActivity.class);
+        Intent intent = new Intent(context, OtherSpendActivity.class);
         intent.putExtra(BUNDLE_USER, user);
         return intent;
     }
@@ -39,7 +39,7 @@ public class NewRevenueActivity extends AppCompatActivity implements NewRevenueL
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_revenue);
         getDataFromIntent();
         mViewModel =
-                new NewRevenueViewModel(this, this, DepartmentRepository.getInstance(), mIdUser);
+                new OtherSpendViewModel(this, this, DepartmentRepository.getInstance(), mIdUser);
         mBinding.setViewmodel(mViewModel);
         initToolBar();
     }

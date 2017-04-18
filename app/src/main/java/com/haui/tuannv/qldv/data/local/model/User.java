@@ -20,6 +20,16 @@ public class User extends BaseObservable implements Serializable {
     private String mEmail;
     @SerializedName("id")
     private int mId;
+    @SerializedName("level")
+    private int mLevel;
+
+    public int getLevel() {
+        return mLevel;
+    }
+
+    public void setLevel(int level) {
+        mLevel = level;
+    }
 
     @Bindable
     public int getId() {

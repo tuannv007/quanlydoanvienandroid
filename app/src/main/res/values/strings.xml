@@ -37,4 +37,9 @@
     <string name="title_save_output">Lưu khoản chi</string>
     <string name="msg_no_connect">Không thể lấy dữ liệu</string>
     <string name="new_renvenue">Thêm khoản chi</string>
+    <string name="dongtien">Đã đóng</string>
+    <string name="title_spend_">Khoản thu</string>
+    <string name="title_manager_spend">Quản lý thu đoàn phí</string>
+    <string name="title_update">Cập nhật</string>
+    <string name="msg_update_money_success">Cập nhật thành công</string>
 </resources>

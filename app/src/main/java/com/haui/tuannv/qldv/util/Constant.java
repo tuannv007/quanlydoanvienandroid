@@ -17,5 +17,7 @@ public class Constant {
         public static final String BUNDLE_DEPARTMENT = "BUNDLE_DEPARTMENT";
         public static final String BUNDLE_SCHOOLYEAR = "BUNDLE_SCHOOLYEAR";
         public static final String BUNDLE_FEE = "BUNDLE_FEE";
+        public static final String BUNDLE_CLASSES = "BUNDLE_CLASSES";
+        public static final String BUNDLE_KEY_ID = "BUNDLE_KEY_ID";
     }
 }

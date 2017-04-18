@@ -4,6 +4,7 @@ import com.haui.tuannv.qldv.data.DataCallback;
 import com.haui.tuannv.qldv.data.local.model.DataClasses;
 import com.haui.tuannv.qldv.data.local.model.DataDepartment;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
+import com.haui.tuannv.qldv.network.Main;
 
 /**
  * Created by tuanbg on 4/9/17.
@@ -24,9 +25,9 @@ public class DepartmentRepository implements DepartmentDataSource {
     }
 
     @Override
-    public void getDepartment(final DataCallback callback) {
+    public void getDepartment(int userId, final DataCallback callback) {
         if (callback == null) return;
-        mRemoteDataSource.getDepartment(new DataCallback<ResponseItem<DataDepartment>>() {
+        mRemoteDataSource.getDepartment(userId, new DataCallback<ResponseItem<DataDepartment>>() {
             @Override
             public void onSuccess(ResponseItem<DataDepartment> data) {
                 callback.onSuccess(data);
@@ -74,8 +75,8 @@ public class DepartmentRepository implements DepartmentDataSource {
     }
 
     @Override
-    public void getAllRevenue(int year, final DataCallback callback) {
-        mRemoteDataSource.getAllRevenue(year, new DataCallback<ResponseItem>() {
+    public void getAllRevenue(int year, String departmentId, final DataCallback callback) {
+        mRemoteDataSource.getAllRevenue(year, departmentId, new DataCallback<ResponseItem>() {
             @Override
             public void onSuccess(ResponseItem data) {
                 callback.onSuccess(data);
@@ -90,8 +91,8 @@ public class DepartmentRepository implements DepartmentDataSource {
 
     @Override
     public void addNewRevenue(String title, int userId, double amount, String description,
-            String date, final DataCallback callback) {
-        mRemoteDataSource.addNewRevenue(title, userId, amount, description, date,
+            String date, String departmentId, final DataCallback callback) {
+        mRemoteDataSource.addNewRevenue(title, userId, amount, description, date, departmentId,
                 new DataCallback<ResponseItem>() {
                     @Override
                     public void onSuccess(ResponseItem data) {
@@ -103,5 +104,35 @@ public class DepartmentRepository implements DepartmentDataSource {
                         callback.onError(msg);
                     }
                 });
+    }
+
+    @Override
+    public void getStudents(int classId, int feeId, final DataCallback callback) {
+        mRemoteDataSource.getStudents(classId, feeId, new DataCallback<ResponseItem>() {
+            @Override
+            public void onSuccess(ResponseItem data) {
+                callback.onSuccess(data);
+            }
+
+            @Override
+            public void onError(String msg) {
+                callback.onError(msg);
+            }
+        });
+    }
+
+    @Override
+    public void updateMoney(Main.UpdateBody updateBody, final DataCallback callback) {
+        mRemoteDataSource.updateMoney(updateBody, new DataCallback<ResponseItem>() {
+            @Override
+            public void onSuccess(ResponseItem data) {
+                callback.onSuccess(data);
+            }
+
+            @Override
+            public void onError(String msg) {
+                callback.onError(msg);
+            }
+        });
     }
 }

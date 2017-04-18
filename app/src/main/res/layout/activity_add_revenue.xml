@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.haui.tuannv.qldv.ui.revenue.newrevenue.NewRevenueViewModel"
+            type="com.haui.tuannv.qldv.ui.spend.otherspend.OtherSpendViewModel"
             />
     </data>
     <LinearLayout

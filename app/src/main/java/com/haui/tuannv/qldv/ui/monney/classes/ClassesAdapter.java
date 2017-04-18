@@ -17,9 +17,14 @@ import java.util.List;
 public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesViewHolder> {
     private List<Classes> mClassesList = new ArrayList<>();
     private LayoutInflater mInflater;
+    private ClassesViewModel mViewModel;
+    private ClassesFragment mFragment;
 
-    public ClassesAdapter(List<Classes> classesList) {
+    public ClassesAdapter(ClassesViewModel viewModel, ClassesFragment fragment,
+            List<Classes> classesList) {
         mClassesList = classesList;
+        mViewModel = viewModel;
+        mFragment = fragment;
     }
 
     @Override
@@ -27,6 +32,8 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
         if (mInflater == null) mInflater = LayoutInflater.from(parent.getContext());
         ItemClassesBinding binding =
                 DataBindingUtil.inflate(mInflater, R.layout.item_classes, parent, false);
+        binding.setViewmodel(mViewModel);
+        binding.setFragment(mFragment);
         return new ClassesViewHolder(binding);
     }
 

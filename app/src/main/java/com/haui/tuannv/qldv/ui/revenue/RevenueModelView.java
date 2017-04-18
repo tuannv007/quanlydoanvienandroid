@@ -1,4 +1,4 @@
-package com.haui.tuannv.qldv.ui.spend;
+package com.haui.tuannv.qldv.ui.revenue;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
@@ -15,24 +15,26 @@ import java.util.List;
 /**
  * Created by tuanbg on 4/9/17.
  */
-public class SpendModelView {
-    private SpendListener mListener;
+public class RevenueModelView {
+    private RevenueListener mListener;
     private DepartmentRepository mRepository;
     private List<Department> mDepartmentList = new ArrayList<>();
     private List<SchoolYear> mSchoolYearList = new ArrayList<>();
     private List<Fee> mFeeList = new ArrayList<>();
     private Context mContext;
+    private int mUserId;
 
-    public SpendModelView(Context context, SpendListener listener,
-            DepartmentRepository repository) {
+    public RevenueModelView(Context context, RevenueListener listener,
+            DepartmentRepository repository, int userId) {
         mListener = listener;
         mRepository = repository;
         mContext = context;
+        mUserId = userId;
     }
 
     public void getDepartment() {
         mListener.showDialog();
-        mRepository.getDepartment(new DataCallback<ResponseItem<DataDepartment>>() {
+        mRepository.getDepartment(mUserId, new DataCallback<ResponseItem<DataDepartment>>() {
             @Override
             public void onSuccess(ResponseItem<DataDepartment> data) {
                 mListener.onSuccess(data);
@@ -68,7 +70,8 @@ public class SpendModelView {
     public void getClasse(Department department, SchoolYear schoolYear, Fee fee) {
         mListener.getClasseFromDepartment(department, schoolYear, fee);
     }
-    public void openOtherSpend(){
+
+    public void openOtherSpend() {
         mListener.openOtherSpend();
     }
 }

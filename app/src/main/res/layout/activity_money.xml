@@ -7,6 +7,7 @@
         >
 
         <include
+
             layout="@layout/partial_toolbar"
             android:id="@+id/toolbar"
             />
