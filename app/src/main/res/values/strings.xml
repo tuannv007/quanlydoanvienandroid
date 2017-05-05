@@ -42,4 +42,17 @@
     <string name="title_manager_spend">Quản lý thu đoàn phí</string>
     <string name="title_update">Cập nhật</string>
     <string name="msg_update_money_success">Cập nhật thành công</string>
+    <string name="tncs">ĐOÀN THANH NIÊN CS HỒ CHÍ MINH</string>
+    <string name="title_haui">ĐOÀN TRƯỜNG DHCN HÀ NỘI</string>
+    <string name="title_export">Xuất pdf báo cáo</string>
+    <string name="title_export_error">Export error</string>
+    <string name="action_export">export</string>
+    <string name="title_export_success">Export success file save in</string>
+    <string name="title_reques_pemissions">Yêu cầu quyền</string>
+    <string name="message_request_read_pemissions">Để sử dụng chức năng này cần quyền ghi dữ liệu. Bạn có đồng ý?</string>
+    <string name="title_data_error">Không có dữ liệu</string>
+    <string name="title_name_spend1">Tên khoản chi</string>
+    <string name="title_introduce_permisition">Ứng dụng được thiết kế bởi Tuannv. Tất cả các quyền được đảm bảo.</string>
+    <string name="title_introduce_detail">Đề tài được xây dựng nhằm mục đích giúp cán bộ đoàn trường có thể quản lý các thông tin của đoàn viên một cách rõ ràng, chính xác hơn. Với thực trạng cách quản lý bằng giấy tờ như hiện nay, thông tin lưu trữ của sinh viên có nguy cơ bị thất lạc. Vì vậy, ứng dụng này sinh ra để giúp người quản lý có thể quản lý được đoàn viên một cách tiện lợi nhất, không lo mất mát hoặc thất lạc dữ liệu. Hệ thống sẽ chia theo các khoa , bên trong khoa bao gồm lớp và bên trong lớp sẽ có các đoàn viên. Đoàn viên bao gồm toàn bộ các thông tin như mã sinh viên, ngày sinh... Hệ thống cũng sẽ quản lý được các khoản thu, chi của một cơ sở đoàn nào đó như khoa, năm. Thống kê một cách chi tiết và chính xác các khoản thu, chi của cơ sở đoàn đảm bảo tính minh bạch về tài chính.</string>
+    <string name="title_infomation">Thông tin liên lạc:</string>
 </resources>

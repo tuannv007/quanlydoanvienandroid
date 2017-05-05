@@ -1,5 +1,6 @@
 package com.haui.tuannv.qldv.ui.monney.otherrevenue;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -12,6 +13,7 @@ import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.data.remote.department.DepartmentRepository;
 import com.haui.tuannv.qldv.databinding.ActivityOtherSpendBinding;
+import com.haui.tuannv.qldv.ui.revenue.RevenueFragment;
 import com.haui.tuannv.qldv.util.ActivityUtil;
 
 /**
@@ -48,6 +50,8 @@ public class OtherRevenueActivity extends AppCompatActivity implements OtherdLis
     @Override
     public void getDataSuccess(ResponseItem data) {
         ActivityUtil.showToast(getApplicationContext(), data.getMessage());
+        Intent intent = new Intent(this, RevenueFragment.class);
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 

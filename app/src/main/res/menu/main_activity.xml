@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/inbox"
+            android:id="@+id/introduce"
             android:checked="false"
             android:icon="@drawable/ic_import_contacts_black_24px"
             android:title="@string/title_introduce"/>
@@ -13,6 +13,5 @@
             android:checked="false"
             android:icon="@drawable/ic_swap_horiz_black_24px"
             android:title="@string/title_logout"/>
-
     </group>
 </menu>

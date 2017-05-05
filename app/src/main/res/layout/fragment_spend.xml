@@ -14,6 +14,11 @@
             name="fragment"
             type="com.haui.tuannv.qldv.ui.revenue.RevenueFragment"
             />
+        <variable
+            name="user"
+            type="com.haui.tuannv.qldv.data.local.model.User"
+            />
+        <import type="android.view.View"/>
     </data>
 
     <RelativeLayout
@@ -185,6 +190,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:visibility="@{user.level == 1 ? View.VISIBLE : View.INVISIBLE}"
             fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_colorNormal="@color/color_teal_500"
             fab:menu_colorPressed="@color/color_teal_500"

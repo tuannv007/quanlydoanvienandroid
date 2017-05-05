@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import com.haui.tuannv.qldv.BR;
 
 public class Payment extends BaseObservable {
-
     @SerializedName("id")
     private String mId;
     @SerializedName("title")

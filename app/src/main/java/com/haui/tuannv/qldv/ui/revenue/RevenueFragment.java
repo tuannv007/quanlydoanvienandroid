@@ -1,6 +1,7 @@
 package com.haui.tuannv.qldv.ui.revenue;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
@@ -25,12 +26,14 @@ import com.haui.tuannv.qldv.ui.monney.otherrevenue.OtherRevenueActivity;
 import com.haui.tuannv.qldv.util.ActivityUtil;
 import com.haui.tuannv.qldv.util.TProgressDialog;
 
+import static android.app.Activity.RESULT_OK;
 import static com.haui.tuannv.qldv.util.Constant.BUNDLE_USER;
 import static com.haui.tuannv.qldv.util.Constant.ConstBundle.BUNDLE_KEY_ID;
 import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_NAME;
 
 /**
  * Created by tuanbg on 3/29/17.
+ * quan ly thu tien
  */
 public class RevenueFragment extends Fragment implements RevenueListener {
     private FragmentSpendBinding mBinding;
@@ -40,6 +43,7 @@ public class RevenueFragment extends Fragment implements RevenueListener {
     private ObservableField<SchoolYear> mSchoolYear = new ObservableField<>();
     private ObservableField<Fee> mFee = new ObservableField<>();
     private User mUser = new User();
+    private ResponseItem<DataDepartment> mData = new ResponseItem<>();
 
     public static RevenueFragment newInstance(User user) {
         RevenueFragment fragment = new RevenueFragment();
@@ -59,6 +63,7 @@ public class RevenueFragment extends Fragment implements RevenueListener {
                 mUser.getId());
         mBinding.setFragment(this);
         mBinding.setViewmodel(mViewModel);
+        mBinding.setUser(mUser);
         return mBinding.getRoot();
     }
 
@@ -103,9 +108,18 @@ public class RevenueFragment extends Fragment implements RevenueListener {
     @Override
     public void onSuccess(ResponseItem<DataDepartment> data) {
         if (data == null) return;
+        mData = data;
         mBinding.spinDepartment.setAdapter(mViewModel.getDepartment(data));
         mBinding.spinSchoolYear.setAdapter(mViewModel.getSchoolYear(data));
         mBinding.spinFee.setAdapter(mViewModel.getFees(data));
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            mViewModel.getDepartment();
+        }
     }
 
     @Override
@@ -131,7 +145,7 @@ public class RevenueFragment extends Fragment implements RevenueListener {
 
     @Override
     public void openOtherSpend() {
-        startActivity(OtherRevenueActivity.getSpendIntent(getActivity()));
+        startActivityForResult(OtherRevenueActivity.getSpendIntent(getActivity()), 1);
     }
 
     public void getIdDepartment(String id) {

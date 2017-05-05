@@ -2,8 +2,11 @@ package com.haui.tuannv.qldv.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,10 +16,9 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import com.haui.tuannv.qldv.R;
 import com.haui.tuannv.qldv.broadcast.NetworkReceiver;
-import com.haui.tuannv.qldv.data.local.model.DataDepartment;
-import com.haui.tuannv.qldv.data.local.model.ResponseItem;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.databinding.ActivityMainBinding;
+import com.haui.tuannv.qldv.ui.introduce.IntroduceActivity;
 import com.haui.tuannv.qldv.ui.revenue.RevenueFragment;
 import com.haui.tuannv.qldv.ui.spend.SpendFragment;
 import com.haui.tuannv.qldv.ui.statistical.StatisticalFragment;
@@ -25,15 +27,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.haui.tuannv.qldv.util.Constant.BUNDLE_USER;
+import static com.haui.tuannv.qldv.util.Constant.SharePreference.SHARE_PRE_NAME;
 
 public class MainActivity extends AppCompatActivity
-        implements NetworkReceiver.NetworkReceiverListener, MainListener {
+        implements NetworkReceiver.NetworkReceiverListener,
+        NavigationView.OnNavigationItemSelectedListener {
     private RelativeLayout mLayout;
     private ActivityMainBinding mBinding;
     private Toolbar mToolbar;
     private ViewPagerAdapter mAdapter;
     private DrawerLayout mDrawerLayout;
     private User mUser;
+    private NavigationView mNavigationView;
 
     public static Intent getDataIntent(Context context, User user) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -48,9 +53,11 @@ public class MainActivity extends AppCompatActivity
         getDataFromIntent();
         mBinding.setActivity(this);
         mLayout = mBinding.mainActivity;
+        mNavigationView = mBinding.navigationView;
         NetworkReceiver.setNetworkReceiver(this);
         initToolBar();
         init();
+        mNavigationView.setNavigationItemSelectedListener(this);
     }
 
     private void getDataFromIntent() {
@@ -88,6 +95,7 @@ public class MainActivity extends AppCompatActivity
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -102,12 +110,20 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onSuccess(ResponseItem<DataDepartment> data) {
-
-    }
-
-    @Override
-    public void onError(String msg) {
-
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.introduce:
+                startActivity(new Intent(MainActivity.this, IntroduceActivity.class));
+                break;
+            case R.id.logout:
+                SharedPreferences preferences =
+                        getSharedPreferences(SHARE_PRE_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                finish();
+                break;
+        }
+        return false;
     }
 }

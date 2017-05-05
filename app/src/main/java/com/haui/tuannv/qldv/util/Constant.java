@@ -20,4 +20,8 @@ public class Constant {
         public static final String BUNDLE_CLASSES = "BUNDLE_CLASSES";
         public static final String BUNDLE_KEY_ID = "BUNDLE_KEY_ID";
     }
+
+    public class RequestCode {
+        public static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL = 1;
+    }
 }

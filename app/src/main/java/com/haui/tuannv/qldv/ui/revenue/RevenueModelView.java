@@ -50,18 +50,21 @@ public class RevenueModelView {
     }
 
     public ArrayAdapter<Department> getDepartment(ResponseItem<DataDepartment> data) {
+        if (mDepartmentList != null) mDepartmentList.clear();
         mDepartmentList.addAll(data.getData().getDepartments());
         return new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item,
                 mDepartmentList);
     }
 
     public ArrayAdapter<SchoolYear> getSchoolYear(ResponseItem<DataDepartment> data) {
+        if (mSchoolYearList != null) mSchoolYearList.clear();
         mSchoolYearList.addAll(data.getData().getSchoolYears());
         return new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item,
                 mSchoolYearList);
     }
 
     public ArrayAdapter<Fee> getFees(ResponseItem<DataDepartment> data) {
+        if (mFeeList != null) mFeeList.clear();
         mFeeList.addAll(data.getData().getFees());
         return new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item,
                 mFeeList);

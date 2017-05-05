@@ -28,7 +28,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/title_name_spend"
+                    android:hint="@string/title_name_spend1"
                     android:text="@={viewmodel.newRevenue.title}"
                     android:textSize="@dimen/sp_15"
                     />

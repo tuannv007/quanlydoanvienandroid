@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import com.haui.tuannv.qldv.R;
@@ -17,8 +20,10 @@ import com.haui.tuannv.qldv.data.local.model.Payment;
 import com.haui.tuannv.qldv.data.local.model.User;
 import com.haui.tuannv.qldv.data.remote.department.DepartmentRepository;
 import com.haui.tuannv.qldv.databinding.FragmentRevenueBinding;
+import com.haui.tuannv.qldv.ui.spend.export.ExportPdfTask;
 import com.haui.tuannv.qldv.ui.spend.otherspend.OtherSpendActivity;
 import com.haui.tuannv.qldv.util.ActivityUtil;
+import com.haui.tuannv.qldv.util.PermissionsUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +49,12 @@ public class SpendFragment extends Fragment implements SpendListener {
         SpendFragment fragment = new SpendFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -108,6 +119,45 @@ public class SpendFragment extends Fragment implements SpendListener {
             return sharedPreferences.getString(BUNDLE_KEY_ID, "");
         }
         return null;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    public void exportPdf() {
+        if (PermissionsUtil.isAllowPermissions(getActivity())) {
+            if (mPaymentList.size() == 0) {
+                ActivityUtil.showToast(getActivity(), getString(R.string.title_data_error));
+                return;
+            }
+            new ExportPdfTask(mPaymentList, new ExportPdfTask.CallBackExport() {
+                @Override
+                public void onExportError() {
+                    ActivityUtil.showToast(getActivity(), getString(R.string.title_export_error));
+                }
+
+                @Override
+                public void onExportSuccess(String path) {
+                    ActivityUtil.showToast(getActivity(),
+                            getString(R.string.title_export_success) + path);
+                }
+            }).execute();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.title_export:
+                exportPdf();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 
